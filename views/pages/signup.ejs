@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/public/css/styles.css" type="text/css" media="all" />
+<%- include('../partials/navbar.ejs') %>
+<h1>Sign up</h1>
+
+<form action="/signup" method="POST" style="display:flex;flex-direction:column;width:60%">
+  <label>Name</label>
+  <input type="text" name="name" value="<%= fields.name %>" />
+  <% if (errors.name) { %>
+  <p style="color:red"><%- errors.name.msg %></p>
+  <% } %>
+  
+  <label>Email</label>
+  <input type="email" name="email" value="<%= fields.email %>" />
+  <% if (errors.email) { %>
+  <p style="color:red"><%- errors.email.msg %></p>
+  <% } %>
+  
+  <label>Password</label>
+  <input type="password" name="password" value="<%= fields.password %>" />
+  <% if (errors.password) { %>
+  <p style="color:red"><%- errors.password.msg %></p>
+  <% } %>
+  
+  <br/>
+  
+  <button>Sign up</button>
+</form>
+
+
+<div>Already signed up? <a href="/login" id="login">Login</a></div>
