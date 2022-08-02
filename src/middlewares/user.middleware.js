@@ -45,7 +45,7 @@ class UserMiddleware{
     const errors = validationResult(req).mapped()
     
     if(Object.keys(errors).length > 0){
-      return res.render('pages/signup.ejs',{
+      return res.render('signup',{
         errors,fields
       })
     }
@@ -60,7 +60,7 @@ class UserMiddleware{
     const errors = validationResult(req).mapped()
     
     if(Object.keys(errors).length > 0){
-      return res.render('pages/login.ejs',{
+      return res.render('login',{
         errors,fields
       })
     }
@@ -68,7 +68,7 @@ class UserMiddleware{
   }
   
   async auth(req,res,next){
-    const token = req.cookies.access_token
+    const token = req.session.access_token
     //console.log(token);
     if(!token) return res.redirect('/login')
     

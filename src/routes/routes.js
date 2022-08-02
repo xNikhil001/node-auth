@@ -15,7 +15,8 @@ const {
 } = userController;
 
 router.get("/", async(req,res)=>{
-  res.render("pages/index.ejs")
+  //console.log(req.session)
+  res.render('index');
 });
 
 router.get("/signup", getSignUp);

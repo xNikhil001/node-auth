@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 
 class UserController{
   async getSignUp(req,res){
-    res.render("pages/signup.ejs",{
+    res.render("signup",{
       errors: {},fields:{}
     })
   }
@@ -19,9 +19,7 @@ class UserController{
   }
   
   async getLogin(req,res){
-    res.render("pages/login.ejs",{
-      errors: {},fields:{},
-    })
+    res.render("login")
   }
   
   async postLogin(req,res){
@@ -29,26 +27,25 @@ class UserController{
     const fields = {
       email,password
     }
+    
     try {
       const result = await User.findOne({email});
       //console.log(result)
       const check = await bcrypt.compare(password,result.password);
       //console.log(check)
       if(!check){
-        return res.render("pages/login.ejs",{
+        return res.render("login",{
           errors: {
             password: {msg:"Password is incorrect!"}
           },fields
         })
       }
-      const token = jwt.sign({id:result._id,email:result.email}, process.env.SECRET, { expiresIn: '1h' });
+      const token = jwt.sign({id:result._id,email:result.email}, process.env.SECRET, { expiresIn: '24h' });
       //console.log(token);
-      res.cookie("access_token",token,{
-        secure: false,
-        httpOnly: true,
-        sameSite: true
-      })
-      res.redirect("/secret");
+      
+      req.session.access_token = token;
+      //console.log(req.session)
+      res.redirect("/");
     } catch (e) {
       console.log(e)
     }
@@ -56,7 +53,7 @@ class UserController{
   
   async getSecret(req,res){
     if(!req.userEmail) return res.redirect("/login")
-    res.render("pages/secret");
+    res.render("secret");
   }
   
   async getLogout(req,res){

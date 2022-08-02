@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Auth</title>
+    <link rel="stylesheet" href="/public/css/styles.css" type="text/css" media="all" />
+    <style type="text/css" media="all">
+      form{
+        display: flex;
+        flex-direction: column;
+      }
+      .error{
+        color: red;
+        margin-bottom: 50px;
+      }
+      button{
+        margin-top: 25px;
+        padding: 5px;
+        width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    {{>_navbar}}
+    <h1>Register</h1>
+    <form action="/signup" method="POST" accept-charset="utf-8">
+      <label for="">Name</label>
+      <input type="text" name="name" id="" value="{{fields.name}}" />
+      <p class="error">{{errors.name.msg}}</p>
+
+      
+      <label for="">Email</label>
+      <input type="text" name="email" id="" value="{{fields.email}}" />
+      <p class="error">{{errors.email.msg}}</p>
+
+      <label for="">Password</label>
+      <input type="password" name="password" id="" value="{{fields.password}}" />
+      <p class="error">{{errors.password.msg}}</p>
+      
+      <button type="submit">Login</button>
+    </form>
+    <p>Already Signed Up? <a href="/login" id="login">Login</a></p>
+  </body>
+</html>
