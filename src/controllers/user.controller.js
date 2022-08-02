@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User.js");
 const bcrypt = require("bcryptjs");
-
+const [store] = require("../config/mongoStore.js")
 class UserController{
   async getSignUp(req,res){
     res.render("signup",{
@@ -58,6 +58,9 @@ class UserController{
   
   async getLogout(req,res){
     req.session.destroy();
+    req.sessionStore.destroy(req.sessionId,(err)=>{
+      if(err) console.log(err)
+    })
     res.redirect("/");
   }
 }

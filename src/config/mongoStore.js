@@ -28,4 +28,4 @@ const sess = {
   store: store
 }
 
-module.exports = sess;
+module.exports = [sess,store];

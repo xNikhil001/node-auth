@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const hbs = require('hbs');
 const {resolve} = require('path');
 const session = require('express-session')
-const sess = require('./src/config/mongoStore.js');
+const [sess] = require('./src/config/mongoStore.js');
 
 app.set('views',resolve(__dirname,"views/pages"))
 app.set("view engine", "hbs");
