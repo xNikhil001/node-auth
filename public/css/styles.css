@@ -1,14 +1,8 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
   font-size: 35px;
-}
-
-body{
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 nav{
@@ -48,4 +42,33 @@ input{
 #logout{
   font-size: 40px;
   color: green;
+}
+
+form{
+  display: flex;
+  margin-top: 25px;
+  flex-direction: column;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pform{
+  text-align: center;
+}
+
+.form_title{
+  font-size: 50px;
+}
+
+.logout_btn{
+  margin-top: 35px;
+  width: 100%;
 }

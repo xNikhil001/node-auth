@@ -4,10 +4,6 @@
     <title>Auth</title>
     <link rel="stylesheet" href="/public/css/styles.css" type="text/css" media="all" />
     <style type="text/css" media="all">
-      form{
-        display: flex;
-        flex-direction: column;
-      }
       .error{
         color: red;
         margin-bottom: 50px;
@@ -23,7 +19,8 @@
   </head>
   <body>
     {{>_navbar}}
-    <h1>Register</h1>
+    <div class="content">
+    <h1 class="form_title">Register</h1>
     <form action="/signup" method="POST" accept-charset="utf-8">
       <label for="">Name</label>
       <input type="text" name="name" id="" value="{{fields.name}}" />
@@ -40,6 +37,7 @@
       
       <button type="submit">SignUp</button>
     </form>
-    <p>Already Signed Up? <a href="/login" id="login">Login</a></p>
+    <p class="pform">Already Signed Up? <a href="/login" id="login">Login</a></p>
+    </div>
   </body>
 </html>

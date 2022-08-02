@@ -45,7 +45,7 @@ class UserController{
       
       req.session.access_token = token;
       //console.log(req.session)
-      res.redirect("/");
+      res.redirect("/secret");
     } catch (e) {
       console.log(e)
     }
@@ -57,7 +57,8 @@ class UserController{
   }
   
   async getLogout(req,res){
-    res.send('hello')
+    req.session.destroy();
+    res.redirect("/");
   }
 }
 
