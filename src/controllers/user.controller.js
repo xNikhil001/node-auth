@@ -57,7 +57,7 @@ class UserController{
   }
   
   async getLogout(req,res){
-    res.clearCookie('access_token').redirect("/")
+    res.send('hello')
   }
 }
 
